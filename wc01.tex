@@ -1,0 +1,118 @@
+\documentclass[a4paper]{exam}
+
+\usepackage{amsmath,amssymb, amsthm}
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{wasysym}
+
+\usepackage{xcolor}
+\usepackage{wasysym}
+
+
+\usepackage{tikz}
+\usepackage{tikz-qtree}
+
+\usepackage{arabtex}
+
+\usepackage{polyglossia}
+
+\setmainlanguage{english}
+\setotherlanguage{urdu}
+\newfontfamily\urdufont[Scale=1.25]{jameel.ttf}
+
+\newcommand{\M}{\text{\texturdu{منفرد}}} % Use \M typeset this operator.
+
+\newtheorem{definition}{Definition}
+\newtheorem{theorem}{Theorem}
+
+\title{Weekly Challenge 01: Discrete Maths Refresher}
+\author{CS 212 Nature of Computation\\Habib University}
+\date{Fall 2026}
+
+\boxedpoints
+
+
+% \printanswers % Uncomment this line
+
+\begin{document}
+\maketitle
+
+\begin{definition}
+    Let $X$ and $Y$ be two subsets of a set $Z$. The \M operator is defined as, $\M(X,Y) = \{n \in Z \mid (n \in X \land n \not\in Y) \lor  (n \not\in X \land n \in Y)\}$.
+\end{definition}
+
+\begin{definition}
+    Let $G = (V,E)$ be a graph. A decomposition of $G$ is a list of subgraphs of $G$ (obtained from removing edges of $G$) such that each edge appears in exactly one subgraph in the list.
+\end{definition}
+
+\begin{figure}[!h]
+    % \vspace*{1cm}
+    \begin{center}
+    \begin{tikzpicture}[scale=.75]
+        
+        \node[style={fill=black,circle}] (a) at (4,1.7){};
+        \node[style={fill=black,circle}] (b) at (2.5,0.73){};
+        \node[style={fill=black,circle}] (c) at (2.939339828,-1.06){};
+        \node[style={fill=black,circle}] (d) at (5.06066,-1.06){};
+        \node[style={fill=black,circle}] (e) at (5.499,0.73){};
+        \draw[black,very thick] (a)--(b) (a)--(c) (a)--(d) (a)--(e) (b)--(c) (b)--(d) (b)--(e) (c)--(d) (c)--(e) (d)--(e);
+
+        \end{tikzpicture} 
+        \hspace{1cm} \includegraphics[scale = 0.1]{right-arrow.png} \hspace{1cm}
+        \begin{tikzpicture}[scale=.75]
+        
+            \node[style={fill=black,circle}] (a) at (4,1.7){};
+            \node[style={fill=black,circle}] (b) at (2.5,0.73){};
+            \node[style={fill=black,circle}] (c) at (2.939339828,-1.06){};
+            \node[style={fill=black,circle}] (d) at (5.06066,-1.06){};
+            \node[style={fill=black,circle}] (e) at (5.499,0.73){};
+            \draw[black,very thick] (a)--(b) (a)--(e) (b)--(c)  (c)--(d) (d)--(e);
+    
+            \end{tikzpicture} 
+            \hspace{1cm}
+            \begin{tikzpicture}[scale=.75]
+        
+                \node[style={fill=black,circle}] (a) at (4,1.7){};
+                \node[style={fill=black,circle}] (b) at (2.5,0.73){};
+                \node[style={fill=black,circle}] (c) at (2.939339828,-1.06){};
+                \node[style={fill=black,circle}] (d) at (5.06066,-1.06){};
+                \node[style={fill=black,circle}] (e) at (5.499,0.73){};
+                \draw[black,very thick]  (a)--(c) (a)--(d) (b)--(d) (b)--(e) (c)--(e) ;
+        
+                \end{tikzpicture} 
+    \end{center}
+        \caption{An example of decomposition of $K_5$ into two $C_5$s.}  
+        \label{fig:exampl_ahg}     
+\end{figure}
+
+
+\section*{Problems}
+\begin{questions}
+
+  
+\question
+Let $X$, $Y$ and $Z$ be subsets of some set $S$. Prove or disprove the following claim: If $\M(X,Z) = \M(Y,Z)$ then $X = Y$.
+\begin{solution}
+    % Enter your solution here 
+\end{solution}
+
+\question
+Prove that for any $n\in \mathbb{Z}^+\setminus\{1,2\}$ the graph $K_n$ can be decomposed into three isomorphic subgraphs if and only if $n+1$ is not divisible by 3. 
+\begin{solution}
+    % Enter solution here
+\end{solution}
+
+ 
+
+\end{questions}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
+
+
+
