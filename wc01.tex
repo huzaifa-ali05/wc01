@@ -34,7 +34,7 @@
 \boxedpoints
 
 
-% \printanswers % Uncomment this line
+\printanswers % Uncomment this line
 
 \begin{document}
 \maketitle
@@ -95,13 +95,58 @@
 \question
 Let $X$, $Y$ and $Z$ be subsets of some set $S$. Prove or disprove the following claim: If $\M(X,Z) = \M(Y,Z)$ then $X = Y$.
 \begin{solution}
-    % Enter your solution here 
+    We can prove this by showing that $X$ and $Y$ are subsets of each other. The operator $\M$ represents the symmetric difference, meaning $A \M B = (A \setminus B) \cup (B \setminus A)$.
+
+Assume $X \M Z = Y \M Z$. We need to establish that $X \subseteq Y$ and $Y \subseteq X$.
+
+Take any element $x$ that belongs to $X$. There are exactly two possibilities: $x$ is in $Z$, or it is not.
+
+First, imagine $x \notin Z$. Since $x$ is in $X$ but not in $Z$, it clearly belongs to $X \M Z$. Because our symmetric differences are equal, $x$ must also be inside $Y \M Z$. We already established that $x$ is not in $Z$, so the only way it can be part of $Y \M Z$ is if it originates from $Y$. Therefore, $x \in Y$.
+
+Second, imagine $x \in Z$. This means $x$ is in both $X$ and $Z$, meaning it gets excluded from $X \M Z$. Due to the equality, $x$ cannot be in $Y \M Z$ either. We know $x$ is in $Z$. If $x$ were missing from $Y$, it would belong to $Z \setminus Y$, placing it squarely in $Y \M Z$. Since we know it is not in $Y \M Z$, it must be present in $Y$ to be excluded. Therefore, $x \in Y$.
+
+Both paths guarantee that $x \in Y$, proving that $X \subseteq Y$.
+
+Because this entire relationship is perfectly symmetrical, we can reverse the roles of $X$ and $Y$ and follow the exact same logic to prove $Y \subseteq X$.
+
+With both subset conditions met, we can confidently conclude that $X = Y$. \qed 
 \end{solution}
 
 \question
 Prove that for any $n\in \mathbb{Z}^+\setminus\{1,2\}$ the graph $K_n$ can be decomposed into three isomorphic subgraphs if and only if $n+1$ is not divisible by 3. 
 \begin{solution}
-    % Enter solution here
+   We can divide this proof into two parts: understanding why the rule is necessary, and demonstrating that it actually works in practice.
+
+For the necessity part, we start with the total number of edges in a complete graph $K_n$, which is $\frac{n(n-1)}{2}$. If we want to split this graph evenly into three identical subgraphs, the total edge count must be perfectly divisible by 3. Mathematically, this means $\frac{n(n-1)}{6}$ must result in a whole number.
+
+Because $n$ and $n-1$ are consecutive numbers, one of them is guaranteed to be even. This automatically handles the divisibility by 2. The only real requirement left is that $n(n-1)$ must be a multiple of 3.
+
+Let us look at how modulo 3 arithmetic applies here:
+\begin{itemize}
+    \item If $n \equiv 0 \pmod 3$, then $n$ is a multiple of 3, satisfying our condition. In this scenario, $n+1 \equiv 1 \pmod 3$, meaning $n+1$ is not divisible by 3.
+    \item If $n \equiv 1 \pmod 3$, then $n-1$ is a multiple of 3, which also satisfies the condition. Here, $n+1 \equiv 2 \pmod 3$, meaning $n+1$ is still not divisible by 3.
+    \item If $n \equiv 2 \pmod 3$, then $n+1 \equiv 0 \pmod 3$, which means $n+1$ is a multiple of 3. However, in this case, neither $n$ nor $n-1$ is a multiple of 3, making it impossible to split the edges evenly into three groups.
+\end{itemize}
+
+This proves that the decomposition is mathematically possible only when $n+1$ is not divisible by 3.
+
+To show this is sufficient, we can manually construct the subgraphs for the first two valid cases, where $n=6$ and $n=7$.
+
+For $n=6$, we have 15 total edges. We need three subgraphs containing 5 edges each. We can use three disjoint 5-cycles ($C_5$) where one vertex is left isolated in each cycle. Using vertices \{1, 2, 3, 4, 5, 6\}:
+\begin{itemize}
+    \item $H_1$: (1,2), (2,3), (3,4), (4,5), (5,1)
+    \item $H_2$: (2,6), (6,3), (3,5), (5,4), (4,2)
+    \item $H_3$: (1,3), (3,6), (6,4), (4,1), (1,5)
+\end{itemize}
+All three $H_i$ graphs are isomorphic to $C_5$ and together they neatly divide the 15 edges.
+
+For $n=7$, we have 21 edges, requiring three subgraphs with 7 edges each. We can use three distinct Hamiltonian cycles ($C_7$). Using vertices \{1, 2, 3, 4, 5, 6, 7\}:
+\begin{itemize}
+    \item $H_1$: (1,2), (2,3), (3,4), (4,5), (5,6), (6,7), (7,1)
+    \item $H_2$: (1,3), (3,5), (5,7), (7,2), (2,4), (4,6), (6,1)
+    \item $H_3$: (1,4), (4,7), (7,5), (5,2), (2,6), (6,3), (3,1)
+\end{itemize}
+Again, each $H_i$ is isomorphic to $C_7$, properly partitioning all 21 edges of $K_7$. \qed
 \end{solution}
 
  
@@ -113,6 +158,5 @@ Prove that for any $n\in \mathbb{Z}^+\setminus\{1,2\}$ the graph $K_n$ can be de
 %%% mode: latex
 %%% TeX-master: t
 %%% End:
-
 
 
